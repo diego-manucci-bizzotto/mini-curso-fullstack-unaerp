@@ -1,6 +1,7 @@
-import {Avatar, Stack, Typography} from "@mui/material";
+import {Avatar, IconButton, Stack, Typography} from "@mui/material";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
-export default function AvatarParticipante({url, nome}) {
+export default function AvatarParticipante({url, nome, removerParticipante}) {
   return(
     <Stack
       direction="column"
@@ -11,8 +12,20 @@ export default function AvatarParticipante({url, nome}) {
       backgroundColor='rgba(0, 0, 0, 0.1)'
       width='150px'
       height='150px'
+      position='relative'
       borderRadius={4}
     >
+      <IconButton
+        onClick={removerParticipante}
+        size={'small'}
+        sx={{
+          position: 'absolute',
+          top: 0,
+          right: 0
+        }}
+      >
+        <HighlightOffIcon/>
+      </IconButton>
       <Avatar
         src={url}
         sx={{
