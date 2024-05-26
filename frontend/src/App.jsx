@@ -1,20 +1,6 @@
-import {Avatar, Box, Button, Card, CardContent, Container, Divider, Stack, styled, Typography} from "@mui/material";
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import {Box, Button, Container, Divider, Stack, Typography} from "@mui/material";
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-
-const CardParticipante = styled(Stack)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
-  borderRadius: '12px',
-  gap: '12px',
-  backgroundColor: 'rgba(0, 0, 0, 0.1)',
-  padding: '12px',
-  width: '150px',
-  height: '150px',
-}))
+import CardAtividade from "./CardAtividade.jsx";
 
 function App() {
   return (
@@ -31,70 +17,24 @@ function App() {
           </Button>
         </Box>
         <Stack spacing={2}>
-          <Card variant='outlined'>
-            <CardContent>
-              <Stack direction="column" spacing={2}>
-                <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
-                  <Typography fontSize='20px' fontWeight='bold'>
-                    Palesta - Padroes de Projeto
-                  </Typography>
-                  <Stack direction="row" spacing={2}>
-                    <Stack direction="row" spacing={0.5} alignItems="center">
-                      <PersonOutlineOutlinedIcon/>
-                      <Typography paddingTop='4px'>1/20</Typography>
-                    </Stack>
-                    <Button
-                      variant="outlined"
-                      startIcon={<PersonAddAltOutlinedIcon/>}>
-                      <Typography paddingTop='4px'>Novo Participante</Typography>
-                    </Button>
-                  </Stack>
-                </Stack>
-                <Box display='flex' gap={'16px'} flexWrap='wrap' alignItems="center" justifyContent="start">
-                  <CardParticipante>
-                    <Avatar
-                      src={'https://avatar.iran.liara.run/public'}
-                      sx={{
-                        width: '75px',
-                        height: '75px',
-                      }}
-                    />
-                    <Typography textAlign='center'>Diego Manucci Bizzotto</Typography>
-                  </CardParticipante>
-                  <CardParticipante>
-                    <Avatar
-                      src={'https://avatar.iran.liara.run/public'}
-                      sx={{
-                        width: '75px',
-                        height: '75px',
-                      }}
-                    />
-                    <Typography textAlign='center'>Diego Manucci Bizzotto</Typography>
-                  </CardParticipante>
-                  <CardParticipante>
-                    <Avatar
-                      src={'https://avatar.iran.liara.run/public'}
-                      sx={{
-                        width: '75px',
-                        height: '75px',
-                      }}
-                    />
-                    <Typography textAlign='center'>Diego Manucci Bizzotto</Typography>
-                  </CardParticipante>
-                  <CardParticipante>
-                    <Avatar
-                      src={'https://avatar.iran.liara.run/public'}
-                      sx={{
-                        width: '75px',
-                        height: '75px',
-                      }}
-                    />
-                    <Typography textAlign='center'>Diego Manucci Bizzotto</Typography>
-                  </CardParticipante>
-                </Box>
-              </Stack>
-            </CardContent>
-          </Card>
+          <CardAtividade atividade={{
+            titulo: 'Atividade 1',
+            participantes: [
+              {
+                nome: 'Pessoa 1',
+                url: 'https://avatar.iran.liara.run/public'
+              },
+              {
+                nome: 'Pessoa 2',
+                url: 'https://avatar.iran.liara.run/public'
+              },
+              {
+                nome: 'Pessoa 3',
+                url: 'https://avatar.iran.liara.run/public'
+              }
+            ],
+            maximoParticipantes: 20,
+          }}/>
         </Stack>
       </Stack>
     </Container>
