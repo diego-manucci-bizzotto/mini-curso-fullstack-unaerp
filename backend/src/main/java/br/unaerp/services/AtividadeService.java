@@ -19,12 +19,8 @@ public class AtividadeService {
 
     private final AtividadeRepository atividadeRepository;
 
-    private final ParticipanteService participanteService;
-
-    @Autowired
-    public AtividadeService(AtividadeRepository atividadeRepository, ParticipanteService participanteService) {
+    public AtividadeService(AtividadeRepository atividadeRepository) {
         this.atividadeRepository = atividadeRepository;
-        this.participanteService = participanteService;
     }
 
     public Atividade findById(Long id) {
@@ -34,10 +30,6 @@ public class AtividadeService {
 
     public List<AtividadeDTO> listarTodos() {
         return atividadeRepository.findAll().stream().map(AtividadeDTO::new).collect(Collectors.toList());
-    }
-
-    public AtividadeDTO listarPorId(Long id) {
-        return new AtividadeDTO(findById(id));
     }
 
     @Transactional

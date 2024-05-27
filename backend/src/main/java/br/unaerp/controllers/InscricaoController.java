@@ -43,9 +43,4 @@ public class InscricaoController {
         inscricaoService.desvincular(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-    @GetMapping
-    public ResponseEntity<List<Inscricao>> listarTodos(){
-        return ResponseEntity.ok(inscricaoService.listarTodos());
-    }
 }

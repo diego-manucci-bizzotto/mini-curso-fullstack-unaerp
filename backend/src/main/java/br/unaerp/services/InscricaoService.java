@@ -38,10 +38,6 @@ public class InscricaoService {
         }
     }
 
-    public List<Inscricao> listarTodos() {
-        return inscricaoRepository.findAll();
-    }
-
     @Transactional
     public void desvincular(Long id) {
         inscricaoRepository.delete(findById(id));

@@ -28,11 +28,6 @@ public class AtividadeController {
         return ResponseEntity.ok(atividadeService.listarTodos());
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<AtividadeDTO> listarPorId(@PathVariable Long id){
-        return ResponseEntity.ok(atividadeService.listarPorId(id));
-    }
-
     @PostMapping
     public ResponseEntity<Long> criar (@RequestBody @Valid CriarAtividadeDTO atividadeDTO) {
         Long id = atividadeService.criar(atividadeDTO);
