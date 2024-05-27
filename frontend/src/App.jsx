@@ -4,8 +4,12 @@ import CardAtividade from "./CardAtividade.jsx";
 import DialogAtividade from "./DialogAtividade.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import DialogErro from "./DialogErro.jsx";
 
 function App() {
+
+  const [openErro, setOpenErro] = useState(false);
+  const [erro, setErro] = useState('');
 
   const [open, setOpen] = useState(false);
   const [atividadeSelecionada, setAtividadeSelecionada] = useState(null);
@@ -15,6 +19,10 @@ function App() {
     axios.get('http://localhost:8080/atividades')
       .then(response => {
         setAtividades(response.data);
+      })
+      .catch(error => {
+        setErro(error.response.data);
+        setOpenErro(true);
       })
   }
 
@@ -33,12 +41,20 @@ function App() {
         buscarAtividades();
         handleClose();
       })
+      .catch(error => {
+        setErro(error.response.data);
+        setOpenErro(true);
+      })
   }
 
   const editarAtividade = (atividade) => {
     axios.put(`http://localhost:8080/atividades/${atividade.id}`, atividade)
       .then(response => {
         buscarAtividades();
+      })
+      .catch(error => {
+        setErro(error.response.data);
+        setOpenErro(true);
       })
   }
 
@@ -47,6 +63,10 @@ function App() {
       .then(response => {
         buscarAtividades();
       })
+      .catch(error => {
+        setErro(error.response.data);
+        setOpenErro(true);
+      })
   }
 
   const criarParticipacao = (participacao) => {
@@ -54,12 +74,20 @@ function App() {
       .then(response => {
         buscarAtividades();
       })
+      .catch(error => {
+        setErro(error.response.data);
+        setOpenErro(true);
+      })
   }
 
   const removerParticipacao = (idParticipacao) => {
     axios.delete(`http://localhost:8080/inscricoes/${idParticipacao}`)
       .then(response => {
         buscarAtividades();
+      })
+      .catch(error => {
+        setErro(error.response.data);
+        setOpenErro(true);
       })
   }
 
@@ -102,6 +130,11 @@ function App() {
         atividadeSelecionada={atividadeSelecionada}
         adicionarAtividade={adicionarAtividade}
         editarAtividade={editarAtividade}
+      />
+      <DialogErro
+        open={openErro}
+        onClose={() => setOpenErro(false)}
+        erro={erro}
       />
     </>
   )

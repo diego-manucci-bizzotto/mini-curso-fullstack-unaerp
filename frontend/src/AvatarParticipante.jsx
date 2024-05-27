@@ -2,9 +2,6 @@ import {Avatar, IconButton, Stack, Typography} from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 export default function AvatarParticipante({inscricao, urlImagem, nome, removerParticipacao}) {
-
-  console.log(inscricao)
-
   return(
     <Stack
       direction="column"
