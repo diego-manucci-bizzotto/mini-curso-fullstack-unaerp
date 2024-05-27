@@ -2,63 +2,65 @@ import {Box, Button, Container, Divider, Stack, Typography} from "@mui/material"
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import CardAtividade from "./CardAtividade.jsx";
 import DialogAtividade from "./DialogAtividade.jsx";
-import {useState} from "react";
-
-const atividades= [
-  {
-    titulo: 'Atividade 1',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non arcu ultricies, lacinia arcu vel, tempor metus. Curabitur ante ante, cursus a laoreet sed, congue ornare nisl.',
-    responsavel: 'Diego Manucci Bizzotto',
-    maximoParticipantes: 10,
-    participantes: [
-      {
-        nome: 'Pessoa 1',
-        url: 'https://avatar.iran.liara.run/public'
-      },
-      {
-        nome: 'Pessoa 2',
-        url: 'https://avatar.iran.liara.run/public'
-      },
-      {
-        nome: 'Pessoa 3',
-        url: 'https://avatar.iran.liara.run/public'
-      }
-    ]
-  },
-  {
-    titulo: 'Atividade 2',
-    descricao: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non arcu ultricies, lacinia arcu vel, tempor metus. Curabitur ante ante, cursus a laoreet sed, congue ornare nisl.',
-    responsavel: 'Joao Marques',
-    maximoParticipantes: 10,
-    participantes: [
-      {
-        nome: 'Pessoa 1',
-        url: 'https://avatar.iran.liara.run/public'
-      },
-      {
-        nome: 'Pessoa 2',
-        url: 'https://avatar.iran.liara.run/public'
-      },
-      {
-        nome: 'Pessoa 3',
-        url: 'https://avatar.iran.liara.run/public'
-      }
-    ]
-  },
-]
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function App() {
 
   const [open, setOpen] = useState(false);
   const [atividadeSelecionada, setAtividadeSelecionada] = useState(null);
+  const [atividades, setAtividades] = useState([]);
+
+  const buscarAtividades = () => {
+    axios.get('http://localhost:8080/atividades')
+      .then(response => {
+        setAtividades(response.data);
+      })
+  }
+
+  useEffect(() => {
+    buscarAtividades();
+  }, []);
 
   const selecionarAtividade = (atividade) => {
     setAtividadeSelecionada(atividade);
     setOpen(true);
   }
 
+  const adicionarAtividade = (atividade) => {
+    axios.post('http://localhost:8080/atividades', atividade)
+      .then(response => {
+        buscarAtividades();
+        handleClose();
+      })
+  }
+
+  const editarAtividade = (atividade) => {
+    axios.put(`http://localhost:8080/atividades/${atividade.id}`, atividade)
+      .then(response => {
+        buscarAtividades();
+      })
+  }
+
   const removerAtividade = (idAtividade) => {
-    console.log("REMOVER", idAtividade)
+    axios.delete(`http://localhost:8080/atividades/${idAtividade}`)
+      .then(response => {
+        buscarAtividades();
+      })
+  }
+
+  const criarParticipacao = (participacao) => {
+    axios.post(`http://localhost:8080/inscricoes`, participacao)
+      .then(response => {
+        buscarAtividades();
+      })
+  }
+
+  const removerParticipacao = (idParticipacao) => {
+    axios.delete(`http://localhost:8080/inscricoes/${idParticipacao}`)
+      .then(response => {
+        buscarAtividades();
+      })
   }
 
   const handleClose = () => {
@@ -84,15 +86,23 @@ function App() {
             {atividades.map((atividade, index) => (
               <CardAtividade
                 atividade={atividade}
-                selecionarAtividade={() => selecionarAtividade(atividade)}
-                removerAtividade={() => removerAtividade(atividade)}
+                selecionarAtividade={selecionarAtividade}
+                removerAtividade={removerAtividade}
+                criarParticipacao={criarParticipacao}
+                removerParticipacao={removerParticipacao}
                 key={index}
               />
             ))}
           </Stack>
         </Stack>
       </Container>
-      <DialogAtividade open={open} onClose={() => handleClose()} atividadeSelecionada={atividadeSelecionada}/>
+      <DialogAtividade
+        open={open}
+        onClose={() => handleClose()}
+        atividadeSelecionada={atividadeSelecionada}
+        adicionarAtividade={adicionarAtividade}
+        editarAtividade={editarAtividade}
+      />
     </>
   )
 }

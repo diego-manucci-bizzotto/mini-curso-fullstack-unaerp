@@ -6,6 +6,7 @@ import br.unaerp.exceptions.MaximoInscritoException;
 import br.unaerp.exceptions.RecursoNaoEncontradoException;
 import br.unaerp.models.Atividade;
 import br.unaerp.repository.AtividadeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +19,12 @@ public class AtividadeService {
 
     private final AtividadeRepository atividadeRepository;
 
-    public AtividadeService(AtividadeRepository atividadeRepository) {
+    private final ParticipanteService participanteService;
+
+    @Autowired
+    public AtividadeService(AtividadeRepository atividadeRepository, ParticipanteService participanteService) {
         this.atividadeRepository = atividadeRepository;
+        this.participanteService = participanteService;
     }
 
     public Atividade findById(Long id) {

@@ -7,13 +7,9 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import DialogParticipante from "./DialogParticipante.jsx";
 import {useState} from "react";
 
-export default function CardAtividade({atividade, selecionarAtividade, removerAtividade}) {
+export default function CardAtividade({atividade, selecionarAtividade, removerAtividade, criarParticipacao, removerParticipacao}) {
 
   const [open, setOpen] = useState(false);
-
-  const removerParticipante = (idParticipacao) => {
-    console.log("REMOVER", idParticipacao)
-  }
 
   return(
     <>
@@ -35,13 +31,13 @@ export default function CardAtividade({atividade, selecionarAtividade, removerAt
             </Stack>
             <Stack direction="row" spacing={2} alignItems="center" justifyContent="end">
               <Button
-                onClick={selecionarAtividade}
+                onClick={() => selecionarAtividade(atividade)}
                 variant="text"
                 startIcon={<EditOutlinedIcon/>}>
                 <Typography paddingTop='4px'>Editar</Typography>
               </Button>
               <Button
-                onClick={() => removerAtividade()}
+                onClick={() => removerAtividade(atividade.id)}
                 variant="text"
                 startIcon={<DeleteOutlineOutlinedIcon/>}>
                 <Typography paddingTop='4px'>Remover</Typography>
@@ -55,24 +51,30 @@ export default function CardAtividade({atividade, selecionarAtividade, removerAt
               <Stack direction='row' spacing={2} alignItems="center">
                 <Stack direction="row" spacing={0.5} alignItems="center">
                   <PersonOutlineOutlinedIcon/>
-                  <Typography paddingTop='4px'>{atividade.participantes.length} / {atividade.maximoParticipantes}</Typography>
+                  <Typography paddingTop='4px'>{atividade.inscricoes.length} / {atividade.maximoInscrito}</Typography>
                 </Stack>
               </Stack>
             </Stack>
             <Box display='flex' gap='16px' flexWrap='wrap' alignItems="center" justifyContent="start">
-              {atividade.participantes.map((participante, index) =>
+              {atividade.inscricoes.map((inscricao, index) =>
                 <AvatarParticipante
-                  nome={participante.nome}
-                  url={participante.url}
+                  inscricao={inscricao}
+                  nome={inscricao.participante.nome}
+                  urlImagem={inscricao.participante.urlImagem}
                   key={index}
-                  removerParticipante={() => removerParticipante(participante)}
+                  removerParticipacao={removerParticipacao}
                 />
               )}
             </Box>
           </Stack>
         </CardContent>
       </Card>
-      <DialogParticipante open={open} onClose={() => setOpen(false)}/>
+      <DialogParticipante
+        open={open}
+        onClose={() => setOpen(false)}
+        atividade={atividade}
+        criarParticipacao={criarParticipacao}
+      />
     </>
   )
 }

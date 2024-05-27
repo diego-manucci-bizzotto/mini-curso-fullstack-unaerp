@@ -6,6 +6,7 @@ import br.unaerp.models.Atividade;
 import br.unaerp.models.Inscricao;
 import br.unaerp.models.Participante;
 import br.unaerp.repository.InscricaoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +19,6 @@ public class InscricaoService {
 
     public InscricaoService(InscricaoRepository inscricaoRepository) {
         this.inscricaoRepository = inscricaoRepository;
-
     }
 
     public Inscricao findById(Long id){

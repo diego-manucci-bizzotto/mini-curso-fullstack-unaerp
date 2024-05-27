@@ -6,10 +6,10 @@ import {useEffect} from "react";
 
 const schema = z.object({
   nome: z.string().min(1, "Nome muito curto!").max(90, "Nome muito longo!"),
-  url: z.string().url("URL invalida!").min(1, "URL muito curta!").max(255, "URL muito longa!"),
+  urlImagem: z.string().url("URL invalida!").min(1, "URL muito curta!").max(255, "URL muito longa!"),
 })
 
-export default function DialogParticipante({open, onClose}){
+export default function DialogParticipante({open, onClose, atividade, criarParticipacao}){
   const {
     handleSubmit,
     control,
@@ -18,7 +18,7 @@ export default function DialogParticipante({open, onClose}){
   } = useForm({
     initialValues: {
       nome: '',
-      url: ''
+      urlImagem: ''
     },
     resolver: zodResolver(schema)
   })
@@ -26,13 +26,14 @@ export default function DialogParticipante({open, onClose}){
   useEffect(() => {
     reset({
       nome: '',
-      url: ''
+      urlImagem: ''
     });
   }, [open]);
 
 
   const onSubmit = (data) => {
-    console.log("ADICIONAR", data)
+    criarParticipacao({idAtividade: atividade.id, participante: data});
+    onClose();
   }
 
   return(
@@ -59,15 +60,15 @@ export default function DialogParticipante({open, onClose}){
               )}
             />
             <Controller
-              name="url"
+              name="urlImagem"
               control={control}
               defaultValue=""
               render={({ field }) => (
                 <TextField
                   {...field}
                   label="URL foto"
-                  error={!!errors.url}
-                  helperText={errors.url?.message}
+                  error={!!errors.urlImagem}
+                  helperText={errors.urlImagem?.message}
                 />
               )}
             />

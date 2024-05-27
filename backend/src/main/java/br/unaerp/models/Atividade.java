@@ -43,7 +43,7 @@ public class Atividade {
 //    )
 //    List<Participante> participantes;
 
-    @OneToMany(mappedBy = "atividade")
+    @OneToMany(mappedBy = "atividade", cascade = CascadeType.REMOVE)
     List<Inscricao> inscricoes;
 
     public Atividade (CriarAtividadeDTO atividadeDTO){

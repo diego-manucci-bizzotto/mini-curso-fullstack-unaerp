@@ -9,10 +9,10 @@ const schema = z.object({
   titulo: z.string().min(1, "Titulo muito curto!").max(80, "Titulo muito longo!"),
   descricao: z.string().min(1, "Descricao muito curta!").max(255, "Descricao muito longa!"),
   responsavel: z.string().min(1, "Nome muito curto!").max(255, "Nome muito longo!"),
-  maximoParticipantes: z.number().min(0, "Minimo de participantes deve ser positivo!").max(100, "Maximo de participantes permitidos: 100!"),
+  maximoInscrito: z.number().min(0, "Maximo de participantes deve ser positivo!").max(100, "Maximo de participantes permitidos: 100!"),
 })
 
-export default function DialogAtividade({open, onClose, atividadeSelecionada}){
+export default function DialogAtividade({open, onClose, atividadeSelecionada, adicionarAtividade, editarAtividade}){
   const {
     handleSubmit,
     control,
@@ -23,7 +23,7 @@ export default function DialogAtividade({open, onClose, atividadeSelecionada}){
       titulo: '',
       descricao: '',
       responsavel: '',
-      maximoParticipantes: 0
+      maximoInscrito: 0
     },
     resolver: zodResolver(schema)
   })
@@ -34,14 +34,14 @@ export default function DialogAtividade({open, onClose, atividadeSelecionada}){
         titulo: atividadeSelecionada.titulo,
         descricao: atividadeSelecionada.descricao,
         responsavel: atividadeSelecionada.responsavel,
-        maximoParticipantes: atividadeSelecionada.maximoParticipantes
+        maximoInscrito: atividadeSelecionada.maximoInscrito
       });
     } else {
       reset({
         titulo: '',
         descricao: '',
         responsavel: '',
-        maximoParticipantes: 0
+        maximoInscrito: 0
       });
     }
   }, [open]);
@@ -49,10 +49,11 @@ export default function DialogAtividade({open, onClose, atividadeSelecionada}){
 
   const onSubmit = (data) => {
     if(atividadeSelecionada){
-      console.log("EDITAR", data)
+      editarAtividade({...data, id: atividadeSelecionada.id});
     } else {
-      console.log("ADICIONAR", data)
+      adicionarAtividade(data);
     }
+    onClose();
   }
 
   return(
@@ -107,7 +108,7 @@ export default function DialogAtividade({open, onClose, atividadeSelecionada}){
               )}
             />
             <Controller
-              name="maximoParticipantes"
+              name="maximoInscrito"
               control={control}
               defaultValue={0}
               render={({ field }) => (
@@ -115,8 +116,8 @@ export default function DialogAtividade({open, onClose, atividadeSelecionada}){
                   {...field}
                   label="Maximo de Participantes"
                   type="number"
-                  error={!!errors.maximoParticipantes}
-                  helperText={errors.maximoParticipantes?.message}
+                  error={!!errors.maximoInscrito}
+                  helperText={errors.maximoInscrito?.message}
                   onChange={(e) => field.onChange(Number(e.target.value))}
                 />
               )}

@@ -7,7 +7,7 @@ import br.unaerp.models.Inscricao;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public record AtividadeDTO(Long id, String titulo, String descricao, String responsavel, Integer maxInscrito, List<InscricaoDTO> inscricoes) {
+public record AtividadeDTO(Long id, String titulo, String descricao, String responsavel, Integer maximoInscrito, List<InscricaoDTO> inscricoes) {
 
     public AtividadeDTO(Atividade atividade){
         this(
