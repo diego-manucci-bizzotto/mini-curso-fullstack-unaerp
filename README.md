@@ -55,8 +55,8 @@ Usando o framework Spring e a linguagem Java na versão 17, aprenderemos a criar
 
 Ao final do primeiro dia do minicurso, esperamos ter uma base sólida para o `back-end` de nossa aplicação e estaremos prontos para avançar para a próxima etapa do desenvolvimento: `front-end`.
 
-**Codeshare** https://codeshare.io/minicurso-fullstack 💻
-
+- **Codeshare** https://codeshare.io/minicurso-fullstack 💻
+- **EndPoints** http://localhost:8080/swagger-ui/index.html#/ 🌐
 ---
 ### Spring Initializr 💡
 Vamos iniciar nosso projeto utilizando o Spring Initializr
