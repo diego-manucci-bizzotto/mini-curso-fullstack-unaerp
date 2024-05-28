@@ -22,13 +22,13 @@ public class Participante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idParticipante")
+    @Column(name = "IDPARTICIPANTE")
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "NOME")
     private String nome;
 
-    @Column(name = "urlImagem") 
+    @Column(name = "URLIMAGEM")
     private String urlImagem;
 
     public Participante(CriarParticipanteDTO participanteDTO){

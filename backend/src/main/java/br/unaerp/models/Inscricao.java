@@ -18,18 +18,18 @@ public class Inscricao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idAtividadeParticipante")
+    @Column(name = "IDATIVIDADEPARTICIPANTE")
     private Long id;
     
     @ManyToOne
-    @JoinColumn(name = "IdAtividade")
+    @JoinColumn(name = "IDATIVIDADE")
     private Atividade atividade;
 
     @ManyToOne
-    @JoinColumn(name = "idParticipante")
+    @JoinColumn(name = "IDPARTICIPANTE")
     private Participante participante;
 
-    @Column(name= "dtInscricao")
+    @Column(name= "DTINSCRICAO")
     private LocalDate dataInscricao;
 
     public Inscricao(Atividade atividade, Participante participante){

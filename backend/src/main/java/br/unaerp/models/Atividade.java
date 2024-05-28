@@ -20,19 +20,19 @@ public class Atividade {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idAtividade")
+    @Column(name = "IDATIVIDADE")
     private Long id;
 
-    @Column(name = "titulo")
+    @Column(name = "TITULO")
     private String titulo;
 
-    @Column(name = "descricao")
+    @Column(name = "DESCRICAO")
     private String descricao;
 
-    @Column(name = "responsavel")
+    @Column(name = "RESPONSAVEL")
     private String responsavel;
 
-    @Column(name = "qtdInscrito")
+    @Column(name = "QTDINSCRITO")
     private Integer maximoInscrito;
 
     @OneToMany(mappedBy = "atividade", cascade = CascadeType.REMOVE)
