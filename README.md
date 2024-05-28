@@ -1,29 +1,6 @@
 # Minicurso Desenvolvimento Full Stack
 
 ---
-
-## Quem Sou Eu?
-
-### 👋 Olá! Eu sou o João Marques 😉
-
-- Tenho 24 anos e entrei na graduação de Engenharia de Software aos 21.
-- Nos meus 2 anos de experiência como Desenvolvedor Full Stack, tive a oportunidade de trabalhar em diversos projetos emocionantes, desde aplicativos da web até soluções corporativas.
-
----
-
-### 🖥️ Desenvolvedor Full Stack
-
-- Trabalho tanto no front-end quanto no back-end para criar soluções completas e integradas.
-- Minhas habilidades incluem HTML, CSS, JavaScript, React, Node.js, e muito mais!
-
----
-
-### 🍻 Amo curtir um bom papo
-
-- E uma cerveja gelada no bar do Mineiro!
-
----
-
 ## O que é Desenvolvimento Full Stack?
 
 ### 🌐 Desenvolvimento Full Stack
@@ -46,27 +23,48 @@ Ele tem uma base ampla em front-end e back-end (o topo do "T"), mas também se e
 
 Isso permite que atue eficazmente em todas as etapas do desenvolvimento de software, enquanto oferece um alto nível de especialização quando necessário.
 
-### ![](https://www.famart.edu.br/wp-content/uploads/2022/03/RD_CAPAS_T.jpg)
+![img.png](imagens/T.png)
 
 ---
-##  Desenvolvimento Back-End com Spring 🌱
+## 🔍 Preview da Aplicação Final
+Ao final do minicurso, teremos desenvolvido uma aplicação web completa para a semana de engenharia.
+Passando por vários pontos importantes e do dia a dia de um desenvolvedor web.
+
+- RESTful
+- CORS
+- HTTPS
+- Arquitetura MSC
+- Reatividade
+- Ciclo de vida do React
+- E muito mais!
+
+Algumas imagens da aplicação
+
+![img.png](imagens/img.png)
+--
+![img_1.png](imagens/img_1.png)
+--
+![img_2.png](imagens/img_2.png)
+--
+## ⚙️ Primeiro dia
+###  Desenvolvimento Back-End com Spring 🌱
 
 Hoje, durante o primeiro dia do nosso minicurso, vamos mergulhar na construção do back-end de uma mini aplicação para a semana de engenharia.
 
-Usando o framework Spring e a linguagem Java na versão 17, aprenderemos a criar APIs RESTful e suas boas práticas. Vamos abordar desde a configuração inicial do projeto até a implementação de endpoints para lidar com diferentes operações, como criar, ler, atualizar e excluir dados.
+Usando o framework Spring e a linguagem Java na versão 17, aprenderemos a criar APIs RESTful e suas boas práticas. Vamos abordar desde a configuração inicial do projeto até a implementação de endpoints para lidar com diferentes operações, como criar, ler, atualizar e excluir dados `[CRUD]`
 
 Ao final do primeiro dia do minicurso, esperamos ter uma base sólida para o `back-end` de nossa aplicação e estaremos prontos para avançar para a próxima etapa do desenvolvimento: `front-end`.
 
-Estou animado para começar este projeto com vocês!
-
 **Codeshare** https://codeshare.io/minicurso-fullstack 💻
 
---- 
+---
 ### Spring Initializr 💡
 Vamos iniciar nosso projeto utilizando o Spring Initializr
 - URL: [Spring Initializr](https://start.spring.io/)
 - Dependências: Spring boot, Spring JPA, h2, validations, lombok
 
+## 🖌️ Segundo dia
+### Desenvolvimento Front-End com React ✨
 
 **Vamos nos conectar!**
 
