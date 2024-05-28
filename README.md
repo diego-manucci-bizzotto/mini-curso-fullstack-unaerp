@@ -66,6 +66,8 @@ Vamos iniciar nosso projeto utilizando o Spring Initializr
 ## 🖌️ Segundo dia
 ### Desenvolvimento Front-End com React ✨
 
+No segundo dia do nosso minicurso, vamos nos concentrar na criação da interface do usuário `front-end` da nossa aplicação. Utilizando a biblioteca React, aprenderemos como construir componentes reutilizáveis, gerenciar o estado da aplicação e interagir com a API que desenvolvemos no primeiro dia.
+
 **Vamos nos conectar!**
 
 - [LinkedIn](URL_DO_SEU_LINKEDIN)
