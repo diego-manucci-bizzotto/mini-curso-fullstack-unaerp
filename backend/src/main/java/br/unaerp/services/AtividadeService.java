@@ -6,7 +6,6 @@ import br.unaerp.exceptions.MaximoInscritoException;
 import br.unaerp.exceptions.RecursoNaoEncontradoException;
 import br.unaerp.models.Atividade;
 import br.unaerp.repository.AtividadeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

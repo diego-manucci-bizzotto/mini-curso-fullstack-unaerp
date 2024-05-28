@@ -35,14 +35,6 @@ public class Atividade {
     @Column(name = "qtdInscrito")
     private Integer maximoInscrito;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name="ATIVIDADE_PARTICIPANTE",
-//            joinColumns = @JoinColumn(name="idAtividade"),
-//            inverseJoinColumns = @JoinColumn(name="idParticipante")
-//    )
-//    List<Participante> participantes;
-
     @OneToMany(mappedBy = "atividade", cascade = CascadeType.REMOVE)
     List<Inscricao> inscricoes;
 
@@ -52,8 +44,4 @@ public class Atividade {
         this.responsavel = atividadeDTO.responsavel();
         this.maximoInscrito = atividadeDTO.maximoInscrito();
     }
-
-//    public Integer getQuantidadeParticipante(){
-//        return this.getParticipantes().size();
-//    }
 }
